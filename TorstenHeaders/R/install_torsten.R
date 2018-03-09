@@ -41,9 +41,11 @@ install_torsten <- function(StanHeaders_version=NULL,
 
 
   TH <- find.package('torstenHeaders')
+  stan.path <- 'cmdstan/stan'
+  math.path <- 'cmdstan/stan/lib/stan_math/stan'
 
-  file.copy(file.path(TH,'stan'),file.path(lib,'StanHeaders/include/src/'),overwrite=TRUE,recursive=TRUE)
-  file.copy(file.path(TH,'math/stan'),file.path(lib,'StanHeaders/include/'),overwrite=TRUE,recursive=TRUE)
+  file.copy(file.path(stan.path),file.path(lib,'StanHeaders/include/src/'),overwrite=TRUE,recursive=TRUE)
+  file.copy(file.path(math.path),file.path(lib,'StanHeaders/include/'),overwrite=TRUE,recursive=TRUE)
 
   if(is.null(rstan_version)) rstan_version <- read.dcf(system.file('CURRENT_VERSION',package = 'torstenHeaders'),fields = 'rstan')
 
