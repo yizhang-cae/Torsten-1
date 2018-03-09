@@ -1,17 +1,17 @@
 
 # Table of Contents
 
-1.  [Torsten](#org70470a3)
-2.  [Licensing](#org6f3925d)
-3.  [Install](#orgdc95df0)
-    1.  [Command line version](#org31ea4c5)
-    2.  [R version](#org4fb1038)
-4.  [Examples](#orga037fdf)
-5.  [C++ Code](#orgbaa4855)
+1.  [Torsten](#orge82e5d9)
+2.  [Licensing](#orgb67ecfd)
+3.  [Install](#org9c1b66c)
+    1.  [Command line version](#org23e2df1)
+    2.  [R version](#orge6c0fc9)
+4.  [Examples](#orgb1f8c3d)
+5.  [C++ Code](#org573288b)
 
 
 
-<a id="org70470a3"></a>
+<a id="orge82e5d9"></a>
 
 # Torsten
 
@@ -51,14 +51,14 @@ Torsten project
 -   [example-models](https://github.com/metrumresearchgroup/example-models)
 
 
-<a id="org6f3925d"></a>
+<a id="orgb67ecfd"></a>
 
 # Licensing
 
 The Torsten library is open-source and licensed under the BSD 3-clause license.
 
 
-<a id="orgdc95df0"></a>
+<a id="org9c1b66c"></a>
 
 # Install
 
@@ -74,7 +74,7 @@ First, download the project, the root path of the project is
 your `torsten_path`.
 
 
-<a id="org31ea4c5"></a>
+<a id="org23e2df1"></a>
 
 ## Command line version
 
@@ -85,7 +85,7 @@ using command line, in `torsten_path/cmdstan`, do
     make model_path/model_name
 
 
-<a id="org4fb1038"></a>
+<a id="orge6c0fc9"></a>
 
 ## R version
 
@@ -94,8 +94,19 @@ R. To install R version of Torsten, at `torsten_path`, in R
 
     source('install.R')
 
+Please ensure the R toolchain includes a C++ compiler with
+C++11 support. In particular, R 3.3.0 and later is
+recommended as it contains toolchain based on gcc 4.9.3. On
+Windows platform, such a toolchain can be found in Rtools33 and later.
 
-<a id="orga037fdf"></a>
+Please ensure CXXFLAGS in .R/Makevars constains flag
+-std=c++11. 
+
+For more information of installation troubleshooting,
+please consult [rstan wiki](https://github.com/stan-dev/rstan/wiki).
+
+
+<a id="orgb1f8c3d"></a>
 
 # Examples
 
@@ -122,7 +133,7 @@ Under the R directory, we provide scripts to run the Stan
 models.
 
 
-<a id="orgbaa4855"></a>
+<a id="org573288b"></a>
 
 # C++ Code
 
