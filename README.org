@@ -1,0 +1,93 @@
+#+TITLE: Torsten: library of C++ functions that support applications of Stan in Pharmacometrics
+#+AUTHOR: Metrum Research Group LLC
+#+DATE: <2018-03-08 Thu>
+#+EMAIL: mailto:billg@metrumrg.com
+* Torsten
+  Torsten is a library of C++ functions that support
+  applications of Stan in Pharmacometrics. The current
+  version provides:
+  - Analytical solution for the one and two linear compartment model with a first-order absorption.
+  - Matrix exponential solution for a general linear compartment model.
+  - Numerical solution for general compartment model using built-in integrators:
+    * Runge-Kutta 4th/5th (rk45) order for non-stiff ODE systems.
+    * Backward Differentiation (bdf) for stiff ODE systems.
+  - Mixed solver for general compartment model with a forcing PK function:
+    * Computes analytical solutions for forcing PK One and Two compartment model with a first-order absorption.
+    * Computes numerical solution for the forced compartment model using the rk45 or bdf method.
+
+The Torsten prototype is still under development and has been
+uploaded to facilitate working with the community of Stan
+developers. The current version was written by 
+- [[https://github.com/charlesm93][Charles Margossian]]
+- [[https://github.com/yizhang-cae][Yi Zhang]], 
+- [[https://github.com/billgillespie][Bill Gillespie]] 
+and [[https://metrumrg.com/][Metrum Research Group, LLC]]. We have recieved extensive help from the [[http://mc-stan.org/about/team/][Stan development team]].
+
+See [[file:example-models/torstenManual.pdf][the user manual]] for more information and guidance on the
+examples. If you have any questions, please raise an issue
+on GitHub or [[mailto:billg@metrumrg.com][send us an e-mail]].
+
+This is the container for the following components of
+Torsten project
+- [[https://github.com/metrumresearchgroup/TorstenHeaders][TorstenHeaders]]
+- [[https://github.com/metrumresearchgroup/math][Math]]
+- [[https://github.com/metrumresearchgroup/stan][Stan]]
+- [[https://github.com/metrumresearchgroup/example-models][example-models]]
+
+* Licensing
+The Torsten library is open-source and licensed under the BSD 3-clause license.
+
+* Install
+We are working with Stan development team to create a
+system to add and share Stan packages. In the mean time,
+the current repo contains forked version of Stan with
+Torsten. The latest version of Torsten (v0.84) is
+compatible with Stan v2.17.1. Torsten is agnostic to which
+Stan interface you use. Here we provide command line and R
+interfaces.
+
+First, download the project, the root path of the project is
+your ~torsten_path~.
+
+** Command line version
+   There is no need to install command line version. To
+   build a Stan model with ~model_name~ in ~model_path~
+   using command line, in ~torsten_path/cmdstan~, do
+#+BEGIN_SRC sh
+  make model_path/model_name
+#+END_SRC    
+
+** R version
+   The R version is based on [[https://cran.r-project.org/web/packages/rstan/index.html][rstan]], the Stan's interface for
+   R. To install R version of Torsten, at ~torsten_path~, in R
+#+BEGIN_SRC R
+  source('install.R')
+#+END_SRC    
+
+* Examples
+For each model, we provide the following files:
+- ~modelName.stan~
+- ~modelName.data.R~
+- ~modelName.init.R~
+- ~modelNameSimulation.R~
+
+The simulation file can be used to create the data and
+initial estimate files.
+
+There are three Stan files for the two compartment model:
+~TwoCptModel~, ~LinTwoCptModel~, and ~GenTwoCptModel~. We also
+provide more sophisticated PK/PD
+examples. ~TwoCptModelPopulation~ extends the two compartment
+model to the case where we have data from multiple patients
+with inter-individual variability.
+
+See the manual for more assistance.
+
+Under the R directory, we provide scripts to run the Stan
+models.
+
+* C++ Code
+
+The C++ code for Torsten can be found on the following repos:
+- Math Library: https://github.com/metrumresearchgroup/math
+- Stan Grammar: https://github.com/metrumresearchgroup/stan
